@@ -1,16 +1,43 @@
-import Header from "./Header"
-import Login from "./Login"
-
+import { useEffect } from "react";
+import Browse from "./Browse";
+import Header from "./Header";
+import Login from "./Login";
+import { RouterProvider, createBrowserRouter, useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../redux/userSlice";
 
 const Body = () => {
-  return (
-    <div className="flex-1 bg-hero bg-cover bg-center bg-no-repeat" style={{height:'900px'}} >
-        <div className="bg-gradient-to-tr from-black h-full">
-    <Header />
-    <Login />
-    </div>
-    </div>
-  )
-}
+  const dispatch = useDispatch();
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Login />,
+    },
+    {
+      path: "/browse",
+      element: <Browse />,
+    },
+  ]);
+   
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid,email,displayName,photoURL} = user;
+        dispatch(addUser({uid,email,displayName,photoURL}));
+      } else {
+        dispatch(removeUser());
+      }
+    });
+    
+  },[])
 
-export default Body
+  return (
+    <div>
+        <RouterProvider router={appRouter} />
+    </div>
+  );
+};
+
+export default Body;
