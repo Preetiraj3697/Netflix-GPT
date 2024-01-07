@@ -1,22 +1,36 @@
-import { signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import NetflixLogo from '../assets/NetfilxLogo.png'
-import UserLogo from '../assets/download.png'
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { addUser, removeUser } from '../redux/userSlice';
 
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector(store => store.user);
-  console.log(user);
+  // console.log(user);
   const handleSignOut = () => {
     signOut(auth).then(() => {
-      navigate("/")
     }).catch((error) => {
       navigate("/error")
     });
   }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid,email,displayName,photoURL} = user;
+        dispatch(addUser({uid,email,displayName,photoURL}));
+        navigate("/browse")
+      } else {
+        dispatch(removeUser());
+        navigate("/")
+      }
+    });
+    return () => unsubscribe();
+  },[])
   return (
     <div className="trasprant flex justify-between mx-2">
         <img src={NetflixLogo} alt="headerimage" className="w-64"/>

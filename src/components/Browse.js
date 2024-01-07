@@ -1,7 +1,11 @@
-import React from 'react'
+
 import Header from './Header'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import MainContainer from './MainContainer'
+import SecondContainer from './SecondContainer'
 
 const Browse = () => {
+   useNowPlayingMovies()
   return (
     <>
     <div
@@ -13,7 +17,8 @@ const Browse = () => {
       </div>
     </div>
     <div className='absolute top-24 font-bold text-white text-3xl bg-black w-full'>
-        Browse
+        <MainContainer />
+        <SecondContainer />
     </div>
     </>
   )
