@@ -6,12 +6,13 @@ const VideoBgContainer = ({ movieId}) => {
   const TrailerId = useSelector(store => store.movies?.trailerVideo)
   useTrailerVideo(movieId)
   
+  if(!TrailerId) return null;
+  
   return (
-    <div>
+    <div className="w-screen">
       <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${TrailerId.key}`}
+        className="w-screen aspect-video"
+        src={`https://www.youtube.com/embed/${TrailerId.key}?&autoplay=1&mute=1`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>

@@ -32,7 +32,7 @@ const Header = () => {
     return () => unsubscribe();
   },[])
   return (
-    <div className="trasprant flex justify-between mx-2">
+    <div className="flex justify-between px-2 bg-black">
         <img src={NetflixLogo} alt="headerimage" className="w-64"/>
         {user && (
           <div className='flex items-center justify-center'>
