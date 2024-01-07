@@ -16,7 +16,7 @@ const Browse = () => {
         <Header />
       </div>
     </div>
-    <div className='absolute top-24 font-bold text-white text-3xl bg-black w-full'>
+    <div className='absolute top-24 text-white bg-black w-full'>
         <MainContainer />
         <SecondContainer />
     </div>
