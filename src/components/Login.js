@@ -44,7 +44,7 @@ const Login = () => {
           }).catch((error) => {
             setErrorMessage(error.message);
           });
-          console.log(user);
+          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -56,7 +56,7 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -73,7 +73,7 @@ const Login = () => {
       style={{ height: "900px" }}
     >
       <div className="bg-gradient-to-tr from-black h-full">
-        <Header />
+        
       </div>
     </div>
     <div className="absolute top-56 left-1/3 bg-[#090204]/80 w-2/6 p-10 rounded-lg">

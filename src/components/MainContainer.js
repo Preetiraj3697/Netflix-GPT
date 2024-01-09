@@ -6,7 +6,7 @@ const MainContainer = () => {
     const movies = useSelector(state => state.movies?.nowPlayingMovies)
     if(!movies) return null;
     const mainMovie = movies[0];
-    console.log(mainMovie);
+    // console.log(mainMovie);
     const {original_title, overview,id} = mainMovie;
   return (
     <div className=" bg-black md:pt-0 text-white">

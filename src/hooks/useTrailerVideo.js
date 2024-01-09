@@ -11,9 +11,9 @@ const useTrailerVideo = (movieId) => {
           API_OPTION
         );
         const json = await data.json();
-        console.log(json);
+        // console.log(json);
         const filterData = json?.results?.filter((item) => item.type === "Trailer");
-        console.log("filterDAta", filterData);
+        // console.log("filterDAta", filterData);
         dispatch(addTrailerVideo(filterData[0]));
       };
       useEffect(() => {
