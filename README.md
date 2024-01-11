@@ -37,6 +37,14 @@
  - GPT Search Page
  - GPT Search Bar
  - (BONUS) Multi-language Feature in our App
+ - Get Open AI Api Key 
+ - Gpt Search API Call
+ - fetched gptMoviesSuggestions from TMDB
+ - created gptSlice added data
+ - Resused Movie List component to make movie suggestion container
+ - Memoization (for reduce fetch api call)
+ - Added .env file (secure tmbd key and openai key)
+ - Adding .env file to gitignore
 
 # Features
 - Login/Sign Up
@@ -52,3 +60,9 @@
 - NetflixGPT
     - Search Bar
     - Movie Suggestions
+
+# Project Setup
+ - Copy `https://github.com/Preetiraj3697/Netflix-GPT.git`
+ - `npm install`
+ - Before starting the project please add .env file and add TMDB and OPENAI KEY into it.
+ - `npm start`
